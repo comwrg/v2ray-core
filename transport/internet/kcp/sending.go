@@ -298,7 +298,7 @@ func (w *SendingWorker) OnPacketLoss(lossRate uint32) {
 	}
 
 	if lossRate >= 15 {
-		w.controlWindow = 3 * w.controlWindow / 4
+		w.controlWindow -= w.controlWindow / 4
 	} else if lossRate <= 5 {
 		w.controlWindow += w.controlWindow / 4
 	}
